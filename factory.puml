@@ -1,0 +1,37 @@
+@startuml
+title Factory Method: создание абонемента (Вариант 8)
+
+interface Pass {
+  +description() : String
+  +price() : double
+}
+
+interface PassCreator {
+  +createPass() : Pass
+}
+
+class WeekendPass
+class MonthlyPass
+class StudentPass
+class SchoolPass
+
+class WeekendPassCreator
+class MonthlyPassCreator
+class StudentPassCreator
+class SchoolPassCreator
+
+PassCreator <|.. WeekendPassCreator
+PassCreator <|.. MonthlyPassCreator
+PassCreator <|.. StudentPassCreator
+PassCreator <|.. SchoolPassCreator
+
+WeekendPassCreator ..> WeekendPass : создаёт
+MonthlyPassCreator ..> MonthlyPass : создаёт
+StudentPassCreator ..> StudentPass : создаёт
+SchoolPassCreator ..> SchoolPass : создаёт
+
+Pass <|.. WeekendPass
+Pass <|.. MonthlyPass
+Pass <|.. StudentPass
+Pass <|.. SchoolPass
+@enduml

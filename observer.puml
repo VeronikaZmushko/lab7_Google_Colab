@@ -1,0 +1,25 @@
+@startuml
+title Observer: оповещение об изменении расписания (Вариант 8)
+
+interface ScheduleListener {
+  +onScheduleChanged(route, newTime) : void
+}
+
+class SuburbanStation {
+  -listeners : List<ScheduleListener>
+  +addListener(listener) : void
+  +removeListener(listener) : void
+  +scheduleChanged(route, newTime) : void
+}
+
+class DisplayBoard
+class Journal
+class Broadcast
+class MobileApp
+
+SuburbanStation o--> ScheduleListener : оповещает
+ScheduleListener <|.. DisplayBoard
+ScheduleListener <|.. Journal
+ScheduleListener <|.. Broadcast
+ScheduleListener <|.. MobileApp
+@enduml
